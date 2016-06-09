@@ -1,7 +1,17 @@
 doctype html
 html
   head
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/main.css')
+    script(type="text/javascript" src='/javascripts/index.js')
+    
   body
-    h1 Coolest app ever
-    p Hello World
+    h1 Tasks App
+    form(name="add-task", method="post", id="new-task")
+      .input
+        span Title
+        input(type="text", name="title")
+      .input
+        span Description
+        input(type="text", name="description")
+      .action
+        input(type="submit", value="add")
