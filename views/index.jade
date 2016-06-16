@@ -2,6 +2,7 @@ doctype html
 html
   head
     link(rel='stylesheet', href='/css/main.css')
+    script(type="text/javascript" src='vendor.js')
     script(type="text/javascript" src='/javascripts/index.js')
     
   body
@@ -11,7 +12,7 @@ html
         span Title
         input(type="text", name="title")
       .input
-        span Description
-        input(type="text", name="description")
+        span Comments
+        input(type="text", name="comments")
       .action
-        input(type="submit", value="add")
+        input(type="submit", value="add", id="add-task")
