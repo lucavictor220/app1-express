@@ -3,7 +3,9 @@ path = require 'path'
 logger = require 'morgan'
 bodyParser = require 'body-parser'
 cookieParser = require 'cookie-parser'
-port = 8080;
+ClearbitController = require './assets/controllers/ClearbitController'
+
+PORT = 8080;
 
 data = []
 
@@ -20,12 +22,7 @@ app.use express.static 'app'
 app.get '/', (req, res) ->
   res.render 'index'
 
-app.get '/tasks', (req, res) ->
-  res.json data
+app.post '/', ClearbitController
 
-app.post '/tasks', (req, res) ->
-  data.push req.body
-  res.json data
-
-app.listen port
-console.log 'Server is running on the port ' + port + ' :)'
+app.listen PORT
+console.log 'Server is running on the port ' + PORT + ' :)'

@@ -19,7 +19,12 @@ Gulp.task 'sass', ->
     .pipe LiveReload()
 
 Gulp.task 'coffee', ->
-  Gulp.src 'assets/js/*.coffee'
+  Gulp.src 'assets/**/*.coffee'
+    .pipe Coffeeify()
+    .pipe Gulp.dest 'app/javascripts'
+
+Gulp.task 'templates', ->
+  Gulp.src 'assets/**/*.coffee'
     .pipe Coffeeify()
     .pipe Gulp.dest 'app/javascripts'
 
@@ -28,11 +33,17 @@ Gulp.task 'watch:sass', ->
   Gulp.watch 'assets/css/*.sass', ['sass']
 
 Gulp.task 'watch:coffee', ->
-  Gulp.watch 'assets/js/*.coffee', ['coffee']
+  Gulp.watch 'assets/**/*.coffee', ['coffee']
 
 Gulp.task 'vendor', ->
   Gulp.src LibsPaths.js
     .pipe Concat('vendor.js')
     .pipe Gulp.dest 'app'
 
-Gulp.task 'default', ['sass', 'coffee', 'watch:sass', 'watch:coffee', 'vendor']
+Gulp.task 'watch:templates', ->
+  Gulp.src 'views/*.jade'
+  .pipe LiveReload()
+
+Gulp.watch 'views/*.jade', ['watch:templates']
+
+Gulp.task 'default', ['sass', 'coffee', 'watch:sass', 'watch:coffee', 'watch:templates', 'vendor']

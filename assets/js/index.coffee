@@ -1,16 +1,14 @@
 $ ->
-  $('#add-task').on 'click', (event) ->
+  $('#find-email').on 'click', (event) ->
     event.preventDefault()
-    newTask = {}
-    input = $('#new-task').serializeArray()
-    newTask[input[0].name] = input[0].value
-    newTask[input[1].name] = input[1].value
-    success = ->
-      console.log "data posted"
+    email = $("input[name='email']").val()
+    $("input[name='email']").val('')
+    success = () ->
+      console.log "success"
     $.ajax(
       type: "POST",
-      url: '/tasks',
-      data: newTask,
+      url: '/',
+      data: { data: email },
       success: success,
       dataType: 'json'
     )

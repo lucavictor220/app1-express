@@ -3,16 +3,13 @@ html
   head
     link(rel='stylesheet', href='/css/main.css')
     script(type="text/javascript" src='vendor.js')
-    script(type="text/javascript" src='/javascripts/index.js')
+    script(type="text/javascript" src='/javascripts/js/index.js')
     
   body
-    h1 Tasks App
+    h1 Email
     form(name="add-task", method="post", id="new-task")
       .input
-        span Title
-        input(type="text", name="title")
-      .input
-        span Comments
-        input(type="text", name="comments")
+        span Email:
+        input(type="text", name="email")
       .action
-        input(type="submit", value="add", id="add-task")
+        input(type="submit", value="Find", id="find-email")
